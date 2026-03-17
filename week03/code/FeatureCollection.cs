@@ -1,5 +1,20 @@
+using System.Collections.Generic;
+
 public class FeatureCollection
 {
-    // TODO Problem 5 - ADD YOUR CODE HERE
-    // Create additional classes as necessary
+    // Matches SetsAndMaps.cs call: featureCollection.Features
+    public List<Feature> Features { get; set; }
+}
+
+public class Feature
+{
+    // Matches SetsAndMaps.cs call: f.Properties
+    public Properties Properties { get; set; }
+}
+
+public class Properties
+{
+    // Matches SetsAndMaps.cs call: f.Properties.Place and f.Properties.Mag
+    public string Place { get; set; }
+    public double Mag { get; set; }
 }
