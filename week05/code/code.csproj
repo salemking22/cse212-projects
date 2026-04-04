@@ -1,12 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
-   <PropertyGroup>
+
+  <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Recursion.cs" />
+    <Compile Include="Maze.cs" />
+    <Compile Include="TupleListExtensionMethods.cs" />
+    <Compile Include="Recursion_Tests.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
