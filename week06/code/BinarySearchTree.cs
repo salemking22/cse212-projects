@@ -11,12 +11,11 @@ public class BinarySearchTree : IEnumerable<int>
     {
         // Create new node
         Node newNode = new(value);
-        // If the list is empty, then point both head and tail to the new node.
+        // If the tree is empty, set root
         if (_root is null)
         {
             _root = newNode;
         }
-        // If the list is not empty, then only head will be affected.
         else
         {
             _root.Insert(value);
@@ -26,8 +25,6 @@ public class BinarySearchTree : IEnumerable<int>
     /// <summary>
     /// Check to see if the tree contains a certain value
     /// </summary>
-    /// <param name="value">The value to look for</param>
-    /// <returns>true if found, otherwise false</returns>
     public bool Contains(int value)
     {
         return _root != null && _root.Contains(value);
@@ -38,7 +35,6 @@ public class BinarySearchTree : IEnumerable<int>
     /// </summary>
     IEnumerator IEnumerable.GetEnumerator()
     {
-        // call the generic version of the method
         return GetEnumerator();
     }
 
@@ -78,9 +74,20 @@ public class BinarySearchTree : IEnumerable<int>
         }
     }
 
+    // ✅ Problem 3: Traverse Backwards
     private void TraverseBackward(Node? node, List<int> values)
     {
-        // TODO Problem 3
+        if (node is not null)
+        {
+            // Traverse right subtree first (largest values)
+            TraverseBackward(node.Right, values);
+
+            // Then add the current node
+            values.Add(node.Data);
+
+            // Finally traverse left subtree (smaller values)
+            TraverseBackward(node.Left, values);
+        }
     }
 
     /// <summary>
@@ -99,8 +106,10 @@ public class BinarySearchTree : IEnumerable<int>
     }
 }
 
-public static class IntArrayExtensionMethods {
-    public static string AsString(this IEnumerable array) {
+public static class IntArrayExtensionMethods
+{
+    public static string AsString(this IEnumerable array)
+    {
         return "<IEnumerable>{" + string.Join(", ", array.Cast<int>()) + "}";
     }
 }
